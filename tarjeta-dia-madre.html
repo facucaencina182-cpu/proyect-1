@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de la Madre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            overflow: hidden;
+        }
+
+        .container {
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 400px;
+            height: 550px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .card:hover {
+            transform: rotateY(180deg);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            transform: rotateY(180deg);
+        }
+
+        .heart {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            position: relative;
+            transform: rotate(-45deg);
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin-bottom: 30px;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -40px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 40px;
+            top: 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: rotate(-45deg) scale(1);
+            }
+            25% {
+                transform: rotate(-45deg) scale(1.1);
+            }
+            50% {
+                transform: rotate(-45deg) scale(1);
+            }
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .subtitle {
+            color: white;
+            font-size: 1.2em;
+            text-align: center;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            color: white;
+            font-size: 1.3em;
+            text-align: center;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .flowers {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .flower {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            animation: bloom 2s ease-in-out infinite;
+        }
+
+        .flower:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .flower:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bloom {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .instruction {
+            position: absolute;
+            bottom: -50px;
+            color: #d63384;
+            font-size: 0.9em;
+            font-style: italic;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-front">
+                <div class="heart"></div>
+                <h1>Feliz Día<br>de la Madre</h1>
+                <p class="subtitle">Con todo mi amor</p>
+                <div class="flowers">
+                    <div class="flower"></div>
+                    <div class="flower"></div>
+                    <div class="flower"></div>
+                </div>
+            </div>
+            <div class="card-back">
+                <p class="message">
+                    "Madre: no hay palabra más bella<br>
+                    que tu nombre en mis labios.<br><br>
+                    Gracias por ser mi luz,<br>
+                    mi refugio y mi fortaleza.<br><br>
+                    Tu amor es el regalo<br>
+                    más hermoso de mi vida."
+                </p>
+                <div class="flowers">
+                    <div class="flower"></div>
+                    <div class="flower"></div>
+                    <div class="flower"></div>
+                </div>
+            </div>
+        </div>
+        <p class="instruction">Pasa el cursor sobre la tarjeta ✨</p>
+    </div>
+
+    <script>
+        // Crear destellos aleatorios
+        function createSparkles() {
+            const body = document.body;
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                body.appendChild(sparkle);
+            }
+        }
+
+        createSparkles();
+    </script>
+</body>
+</html>
